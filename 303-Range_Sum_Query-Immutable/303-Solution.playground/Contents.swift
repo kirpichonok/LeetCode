@@ -5,6 +5,13 @@ class NumArray {
         self.nums = nums
     }
 
+    /// Calculate the sum of the elements of nums between indices left and right inclusive
+    /// - Parameters:
+    ///   - left: The lower limit of the range.
+    ///   - right: The upper limit of the range.
+    /// - Returns: The sum of the elements in the range of indices.
+    /// - Complexity: O(*n*), where *n* is the number of elements in the
+    /// range between the upper and lower limits.
     func sumRange(_ left: Int, _ right: Int) -> Int {
         nums[left...right].reduce(0, +)
     }
