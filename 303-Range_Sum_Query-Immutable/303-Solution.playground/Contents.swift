@@ -3,6 +3,7 @@ class NumArray {
 
     init(_ nums: [Int]) {
         self.nums = nums
+        sum = nums.reduce(0, +)
     }
 
     /// Calculate the sum of the elements of nums between indices left and right inclusive
@@ -13,12 +14,19 @@ class NumArray {
     /// - Complexity: O(*n*), where *n* is the number of elements in the
     /// range between the upper and lower limits.
     func sumRange(_ left: Int, _ right: Int) -> Int {
-        nums[left...right].reduce(0, +)
+        if (right - left + 1) < (nums.count / 2) {
+            var sum = self.sum
+            sum -= nums[0..<left].reduce(0, +)
+            sum -= nums[right..<nums.count].reduce(0, +)
+        }
+
+        return nums[left...right].reduce(0, +)
     }
 
     // MARK: - Private interface
 
     private let nums: [Int]
+    private let sum: Int
 }
 
 let array1 = [1, -7, 5, 0, 12, 6]
